@@ -1,38 +1,75 @@
 <?php
 
+/*
+ * This file is part of Laravel Likeable.
+ *
+ * (c) DraperStudio <hello@draperstudio.tech>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace DraperStudio\Likeable\Traits;
 
 use DraperStudio\Likeable\Models\Counter;
 use DraperStudio\Likeable\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Likeable.
+ *
+ * @author DraperStudio <hello@draperstudio.tech>
+ */
 trait Likeable
 {
+    /**
+     * @return mixed
+     */
     public function likes()
     {
         return $this->morphMany(Like::class, 'likeable');
     }
 
+    /**
+     * @return mixed
+     */
     public function likeCounter()
     {
         return $this->morphOne(Counter::class, 'likeable');
     }
 
+    /**
+     * @return mixed
+     */
     public function getLikeCount()
     {
         return $this->likeCount;
     }
 
+    /**
+     * @param $from
+     * @param null $to
+     *
+     * @return mixed
+     */
     public function getLikeCountByDate($from, $to = null)
     {
         return Like::countByDate($this, $from, $to);
     }
 
+    /**
+     * @return int
+     */
     public function getLikeCountAttribute()
     {
         return $this->likeCounter ? $this->likeCounter->count : 0;
     }
 
+    /**
+     * @param Model $likedBy
+     *
+     * @return bool
+     */
     public function like(Model $likedBy)
     {
         if ($this->getLikedRecord($likedBy)) {
@@ -47,6 +84,11 @@ trait Likeable
         $this->incrementCounter();
     }
 
+    /**
+     * @param Model $likedBy
+     *
+     * @return bool
+     */
     public function dislike(Model $likedBy)
     {
         if (!$like = $this->getLikedRecord($likedBy)) {
@@ -58,6 +100,12 @@ trait Likeable
         $this->decrementCounter();
     }
 
+    /**
+     * @param $query
+     * @param Model $model
+     *
+     * @return mixed
+     */
     public function scopeWhereLiked($query, Model $model)
     {
         return $query->whereHas('likes', function ($query) use ($model) {
@@ -66,6 +114,9 @@ trait Likeable
         });
     }
 
+    /**
+     * @return Counter
+     */
     private function incrementCounter()
     {
         if ($counter = $this->likeCounter()->first()) {
@@ -81,6 +132,9 @@ trait Likeable
         return $counter;
     }
 
+    /**
+     * @return mixed
+     */
     private function decrementCounter()
     {
         if ($counter = $this->likeCounter()->first()) {
@@ -91,6 +145,11 @@ trait Likeable
         return $counter;
     }
 
+    /**
+     * @param Model $model
+     *
+     * @return mixed
+     */
     public function getLikedRecord(Model $model)
     {
         return $this->likes()
@@ -99,6 +158,11 @@ trait Likeable
                     ->first();
     }
 
+    /**
+     * @param Model $model
+     *
+     * @return bool
+     */
     public function liked(Model $model)
     {
         return (bool) $this->likes()

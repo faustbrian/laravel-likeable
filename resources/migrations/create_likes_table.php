@@ -4,8 +4,16 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+/**
+ * Class CreateLikesTable.
+ *
+ * @author DraperStudio <hello@draperstudio.tech>
+ */
 class CreateLikesTable extends Migration
 {
+    /**
+     *
+     */
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
@@ -32,6 +40,9 @@ class CreateLikesTable extends Migration
         });
     }
 
+    /**
+     *
+     */
     public function down()
     {
         Schema::dropIfExists('likes');
