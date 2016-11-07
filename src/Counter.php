@@ -1,6 +1,6 @@
 <?php
 
-namespace BrianFaust\Likeable\Models;
+namespace BrianFaust\Likeable;
 
 use Illuminate\Database\Eloquent\Model;
 

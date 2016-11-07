@@ -30,13 +30,13 @@ php artisan vendor:publish --provider="BrianFaust\Likeable\ServiceProvider" && p
 
 namespace App;
 
-use BrianFaust\Likeable\Contracts\Likeable;
-use BrianFaust\Likeable\Traits\Likeable as LikeableTrait;
+use BrianFaust\Likeable\HasLikesTrait;
+use BrianFaust\Likeable\Interfaces\HasLikes;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model implements Likeable
+class Post extends Model implements HasLikes
 {
-    use LikeableTrait;
+    use HasLikesTrait;
 }
 
 ```

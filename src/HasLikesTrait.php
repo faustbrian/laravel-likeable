@@ -2,11 +2,11 @@
 
 namespace BrianFaust\Likeable\Traits;
 
-use BrianFaust\Likeable\Models\Counter;
-use BrianFaust\Likeable\Models\Like;
+use BrianFaust\Likeable\Counter;
+use BrianFaust\Likeable\Like;
 use Illuminate\Database\Eloquent\Model;
 
-trait Likeable
+trait HasLikesTrait
 {
     /**
      * @return mixed

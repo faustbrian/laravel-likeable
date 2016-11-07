@@ -1,10 +1,10 @@
 <?php
 
-namespace BrianFaust\Likeable\Contracts;
+namespace BrianFaust\Likeable\Interfaces;
 
 use Illuminate\Database\Eloquent\Model;
 
-interface Likeable
+interface HasLikes
 {
     /**
      * @return mixed
