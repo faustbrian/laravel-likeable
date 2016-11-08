@@ -12,14 +12,14 @@ And then include the service provider within `app/config/app.php`.
 
 ``` php
 'providers' => [
-    BrianFaust\Likeable\ServiceProvider::class
+    BrianFaust\Likeable\LikeableServiceProvider::class
 ];
 ```
 
 To get started, you'll need to publish the vendor assets and migrate:
 
 ```
-php artisan vendor:publish --provider="BrianFaust\Likeable\ServiceProvider" && php artisan migrate
+php artisan vendor:publish --provider="BrianFaust\Likeable\LikeableServiceProvider" && php artisan migrate
 ```
 
 ## Usage
