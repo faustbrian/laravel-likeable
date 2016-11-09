@@ -1,6 +1,6 @@
 <?php
 
-namespace BrianFaust\Likeable\Traits;
+namespace BrianFaust\Likeable;
 
 use BrianFaust\Likeable\Counter;
 use BrianFaust\Likeable\Like;
