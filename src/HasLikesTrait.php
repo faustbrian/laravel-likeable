@@ -1,9 +1,16 @@
 <?php
 
+/*
+ * This file is part of Laravel Likeable.
+ *
+ * (c) Brian Faust <hello@brianfaust.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace BrianFaust\Likeable;
 
-use BrianFaust\Likeable\Counter;
-use BrianFaust\Likeable\Like;
 use Illuminate\Database\Eloquent\Model;
 
 trait HasLikesTrait
@@ -77,7 +84,7 @@ trait HasLikesTrait
      */
     public function dislike(Model $likedBy)
     {
-        if (!$like = $this->getLikedRecord($likedBy)) {
+        if (! $like = $this->getLikedRecord($likedBy)) {
             return false;
         }
 
