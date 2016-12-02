@@ -11,9 +11,7 @@ $ composer require faustbrian/laravel-likeable
 And then include the service provider within `app/config/app.php`.
 
 ``` php
-'providers' => [
-    BrianFaust\Likeable\LikeableServiceProvider::class
-];
+BrianFaust\Likeable\LikeableServiceProvider::class
 ```
 
 To get started, you'll need to publish the vendor assets and migrate:
