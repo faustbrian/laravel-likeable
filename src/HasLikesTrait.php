@@ -84,7 +84,7 @@ trait HasLikesTrait
      */
     public function dislike(Model $likedBy)
     {
-        if (! $like = $this->getLikedRecord($likedBy)) {
+        if (!$like = $this->getLikedRecord($likedBy)) {
             return false;
         }
 
