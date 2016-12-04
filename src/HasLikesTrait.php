@@ -23,8 +23,8 @@ declare(strict_types=1);
 namespace BrianFaust\Likeable;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasLikesTrait
 {
