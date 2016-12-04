@@ -22,9 +22,9 @@ declare(strict_types=1);
 
 namespace BrianFaust\Likeable;
 
-use BrianFaust\ServiceProvider\ServiceProvider;
+use BrianFaust\ServiceProvider\AbstractServiceProvider;
 
-class LikeableServiceProvider extends ServiceProvider
+class LikeableServiceProvider extends AbstractServiceProvider
 {
     /**
      * Bootstrap the application services.
