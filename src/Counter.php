@@ -23,6 +23,7 @@ declare(strict_types=1);
 namespace BrianFaust\Likeable;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Counter extends Model
 {
@@ -39,7 +40,7 @@ class Counter extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function likeable()
+    public function likeable(): MorphTo
     {
         return $this->morphTo();
     }

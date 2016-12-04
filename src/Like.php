@@ -24,6 +24,7 @@ namespace BrianFaust\Likeable;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Like extends Model
 {
@@ -40,7 +41,7 @@ class Like extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function likeable()
+    public function likeable(): MorphTo
     {
         return $this->morphTo();
     }
@@ -50,7 +51,7 @@ class Like extends Model
      *
      * @return mixed
      */
-    public static function count(Model $likeable)
+    public static function count(Model $likeable): int
     {
         return $likeable->likes()
                         ->count();
@@ -63,7 +64,7 @@ class Like extends Model
      *
      * @return mixed
      */
-    public static function countByDate(Model $likeable, $from, $to = null)
+    public static function countByDate(Model $likeable, $from, $to = null): int
     {
         $query = $likeable->likes();
 
@@ -85,9 +86,9 @@ class Like extends Model
      *
      * @return mixed
      */
-    public static function like(Model $likeable)
+    public static function like(Model $likeable): bool
     {
-        return (new static())->cast($likeable, 1);
+        return (bool) (new static())->cast($likeable, 1);
     }
 
     /**
@@ -95,15 +96,15 @@ class Like extends Model
      *
      * @return mixed
      */
-    public static function dislike(Model $likeable)
+    public static function dislike(Model $likeable): bool
     {
-        return (new static())->cast($likeable, -1);
+        return (bool) (new static())->cast($likeable, -1);
     }
 
     /**
      * @param $value
      */
-    public function setValueAttribute($value)
+    public function setValueAttribute($value): void
     {
         $this->attributes['value'] = ($value == -1) ? -1 : 1;
     }
@@ -114,7 +115,7 @@ class Like extends Model
      *
      * @return bool
      */
-    protected function cast(Model $likeable, $value = 1)
+    protected function cast(Model $likeable, $value = 1): bool
     {
         if (!$likeable->exists) {
             return false;
@@ -123,8 +124,8 @@ class Like extends Model
         $vote = new static();
         $vote->fill(compact('value'));
 
-        return $vote->likeable()
-                    ->associate($likeable)
-                    ->save();
+        return (bool) $vote->likeable()
+            ->associate($likeable)
+            ->save();
     }
 }

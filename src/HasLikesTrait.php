@@ -23,13 +23,15 @@ declare(strict_types=1);
 namespace BrianFaust\Likeable;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 trait HasLikesTrait
 {
     /**
      * @return mixed
      */
-    public function likes()
+    public function likes(): MorphMany
     {
         return $this->morphMany(Like::class, 'likeable');
     }
@@ -37,7 +39,7 @@ trait HasLikesTrait
     /**
      * @return mixed
      */
-    public function likeCounter()
+    public function likeCounter(): MorphOne
     {
         return $this->morphOne(Counter::class, 'likeable');
     }
@@ -45,7 +47,7 @@ trait HasLikesTrait
     /**
      * @return mixed
      */
-    public function getLikeCount()
+    public function getLikeCount(): int
     {
         return $this->likeCount;
     }
@@ -56,7 +58,7 @@ trait HasLikesTrait
      *
      * @return mixed
      */
-    public function getLikeCountByDate($from, $to = null)
+    public function getLikeCountByDate($from, $to = null): int
     {
         return Like::countByDate($this, $from, $to);
     }
@@ -64,7 +66,7 @@ trait HasLikesTrait
     /**
      * @return int
      */
-    public function getLikeCountAttribute()
+    public function getLikeCountAttribute(): int
     {
         return $this->likeCounter ? $this->likeCounter->count : 0;
     }
@@ -74,7 +76,7 @@ trait HasLikesTrait
      *
      * @return bool
      */
-    public function like(Model $likedBy)
+    public function like(Model $likedBy): void
     {
         if ($this->getLikedRecord($likedBy)) {
             return false;
@@ -93,7 +95,7 @@ trait HasLikesTrait
      *
      * @return bool
      */
-    public function dislike(Model $likedBy)
+    public function dislike(Model $likedBy): void
     {
         if (!$like = $this->getLikedRecord($likedBy)) {
             return false;
@@ -121,7 +123,7 @@ trait HasLikesTrait
     /**
      * @return Counter
      */
-    private function incrementCounter()
+    private function incrementCounter(): int
     {
         if ($counter = $this->likeCounter()->first()) {
             $counter->increment('count', 1);
@@ -139,7 +141,7 @@ trait HasLikesTrait
     /**
      * @return mixed
      */
-    private function decrementCounter()
+    private function decrementCounter(): int
     {
         if ($counter = $this->likeCounter()->first()) {
             $counter->decrement('count', 1);
@@ -154,7 +156,7 @@ trait HasLikesTrait
      *
      * @return mixed
      */
-    public function getLikedRecord(Model $model)
+    public function getLikedRecord(Model $model): Model
     {
         return $this->likes()
                     ->where('liked_by_id', $model->id)
@@ -167,7 +169,7 @@ trait HasLikesTrait
      *
      * @return bool
      */
-    public function liked(Model $model)
+    public function liked(Model $model): bool
     {
         return (bool) $this->likes()
                            ->where('liked_by_id', $model->id)
