@@ -76,7 +76,7 @@ trait HasLikesTrait
      *
      * @return bool
      */
-    public function like(Model $likedBy): void
+    public function like(Model $likedBy): bool
     {
         if ($this->getLikedRecord($likedBy)) {
             return false;
@@ -87,7 +87,7 @@ trait HasLikesTrait
         $like->liked_by_type = get_class($likedBy);
         $this->likes()->save($like);
 
-        $this->incrementCounter();
+        return (bool) $this->incrementCounter();
     }
 
     /**
@@ -95,7 +95,7 @@ trait HasLikesTrait
      *
      * @return bool
      */
-    public function dislike(Model $likedBy): void
+    public function dislike(Model $likedBy): bool
     {
         if (!$like = $this->getLikedRecord($likedBy)) {
             return false;
@@ -103,7 +103,7 @@ trait HasLikesTrait
 
         $like->delete();
 
-        $this->decrementCounter();
+        return (bool) $this->decrementCounter();
     }
 
     /**
