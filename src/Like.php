@@ -47,6 +47,14 @@ class Like extends Model
     }
 
     /**
+     * @return MorphTo
+     */
+    public function likedBy() : MorphTo
+    {
+        return $this->morphTo('liked_by');
+    }
+
+    /**
      * @param Model $likeable
      *
      * @return mixed
