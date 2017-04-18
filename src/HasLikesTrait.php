@@ -123,7 +123,7 @@ trait HasLikesTrait
     /**
      * @return Counter
      */
-    private function incrementCounter(): int
+    private function incrementCounter(): Counter
     {
         if ($counter = $this->likeCounter()->first()) {
             $counter->increment('count', 1);
@@ -141,7 +141,7 @@ trait HasLikesTrait
     /**
      * @return mixed
      */
-    private function decrementCounter(): int
+    private function decrementCounter(): Counter
     {
         if ($counter = $this->likeCounter()->first()) {
             $counter->decrement('count', 1);
@@ -156,7 +156,7 @@ trait HasLikesTrait
      *
      * @return mixed
      */
-    public function getLikedRecord(Model $model): Model
+    public function getLikedRecord(Model $model): ?Model
     {
         return $this->likes()
                     ->where('liked_by_id', $model->id)
