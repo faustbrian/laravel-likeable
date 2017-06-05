@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Likeable.
  *
@@ -12,8 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Likeable;
+namespace BrianFaust\Likeable\Traits;
 
+use BrianFaust\Likeable\Models\Like;
+use BrianFaust\Likeable\Models\Counter;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;

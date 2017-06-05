@@ -1,8 +1,5 @@
 <?php
 
-
-declare(strict_types=1);
-
 /*
  * This file is part of Laravel Likeable.
  *
@@ -12,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Likeable;
+namespace BrianFaust\Likeable\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -41,7 +38,7 @@ class Like extends Model
     /**
      * @return MorphTo
      */
-    public function likedBy() : MorphTo
+    public function likedBy(): MorphTo
     {
         return $this->morphTo('liked_by');
     }
@@ -104,7 +101,7 @@ class Like extends Model
     /**
      * @param $value
      */
-    public function setValueAttribute($value): void
+    public function setValueAttribute($value)
     {
         $this->attributes['value'] = ($value == -1) ? -1 : 1;
     }
