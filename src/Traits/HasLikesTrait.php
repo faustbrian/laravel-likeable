@@ -11,8 +11,8 @@
 
 namespace BrianFaust\Likeable\Traits;
 
-use BrianFaust\Likeable\Models\Like;
 use BrianFaust\Likeable\Models\Counter;
+use BrianFaust\Likeable\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
