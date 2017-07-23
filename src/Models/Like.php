@@ -65,7 +65,7 @@ class Like extends Model
     {
         $query = $likeable->likes();
 
-        if (!empty($to)) {
+        if (! empty($to)) {
             $range = [new Carbon($from), new Carbon($to)];
         } else {
             $range = [
@@ -114,7 +114,7 @@ class Like extends Model
      */
     protected function cast(Model $likeable, $value = 1): bool
     {
-        if (!$likeable->exists) {
+        if (! $likeable->exists) {
             return false;
         }
 
