@@ -13,11 +13,11 @@ declare(strict_types=1);
 
 namespace BrianFaust\Likeable\Traits;
 
-use BrianFaust\Likeable\Models\Like;
 use BrianFaust\Likeable\Models\Counter;
+use BrianFaust\Likeable\Models\Like;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 trait HasLikesTrait
 {
@@ -90,7 +90,7 @@ trait HasLikesTrait
      */
     public function dislike(Model $likedBy): bool
     {
-        if (! $like = $this->getLikedRecord($likedBy)) {
+        if (!$like = $this->getLikedRecord($likedBy)) {
             return false;
         }
 
