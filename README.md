@@ -1,22 +1,22 @@
 # Laravel Likeable
 
-[![Build Status](https://img.shields.io/travis/faustbrian/Laravel-Likeable/master.svg?style=flat-square)](https://travis-ci.org/faustbrian/Laravel-Likeable)
-[![PHP from Packagist](https://img.shields.io/packagist/php-v/faustbrian/laravel-likeable.svg?style=flat-square)]()
-[![Latest Version](https://img.shields.io/github/release/faustbrian/Laravel-Likeable.svg?style=flat-square)](https://github.com/faustbrian/Laravel-Likeable/releases)
-[![License](https://img.shields.io/packagist/l/faustbrian/Laravel-Likeable.svg?style=flat-square)](https://packagist.org/packages/faustbrian/Laravel-Likeable)
+[![Build Status](https://img.shields.io/travis/artisanry/Likeable/master.svg?style=flat-square)](https://travis-ci.org/artisanry/Likeable)
+[![PHP from Packagist](https://img.shields.io/packagist/php-v/artisanry/likeable.svg?style=flat-square)]()
+[![Latest Version](https://img.shields.io/github/release/artisanry/Likeable.svg?style=flat-square)](https://github.com/artisanry/Likeable/releases)
+[![License](https://img.shields.io/packagist/l/artisanry/Likeable.svg?style=flat-square)](https://packagist.org/packages/artisanry/Likeable)
 
 ## Installation
 
 Require this package, with [Composer](https://getcomposer.org/), in the root directory of your project.
 
 ``` bash
-$ composer require faustbrian/laravel-likeable
+$ composer require artisanry/likeable
 ```
 
 To get started, you'll need to publish the vendor assets and migrate:
 
 ```
-php artisan vendor:publish --provider="BrianFaust\Likeable\LikeableServiceProvider" && php artisan migrate
+php artisan vendor:publish --provider="Artisanry\Likeable\LikeableServiceProvider" && php artisan migrate
 ```
 
 ## Usage
@@ -27,7 +27,7 @@ php artisan vendor:publish --provider="BrianFaust\Likeable\LikeableServiceProvid
 
 namespace App;
 
-use BrianFaust\Likeable\HasLikesTrait;
+use Artisanry\Likeable\HasLikesTrait;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -90,7 +90,7 @@ $ phpunit
 
 ## Security
 
-If you discover a security vulnerability within this package, please send an e-mail to hello@brianfaust.me. All security vulnerabilities will be promptly addressed.
+If you discover a security vulnerability within this package, please send an e-mail to hello@basecode.sh. All security vulnerabilities will be promptly addressed.
 
 ## Credits
 
@@ -99,4 +99,4 @@ If you discover a security vulnerability within this package, please send an e-m
 
 ## License
 
-[MIT](LICENSE) © [Brian Faust](https://brianfaust.me)
+[MIT](LICENSE) © [Brian Faust](https://basecode.sh)

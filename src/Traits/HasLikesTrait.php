@@ -5,16 +5,16 @@ declare(strict_types=1);
 /*
  * This file is part of Laravel Likeable.
  *
- * (c) Brian Faust <hello@brianfaust.de>
+ * (c) Brian Faust <hello@basecode.sh>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace BrianFaust\Likeable\Traits;
+namespace Artisanry\Likeable\Traits;
 
-use BrianFaust\Likeable\Models\Counter;
-use BrianFaust\Likeable\Models\Like;
+use Artisanry\Likeable\Models\Counter;
+use Artisanry\Likeable\Models\Like;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;

@@ -1,12 +1,12 @@
 {
-    "name": "faustbrian/laravel-likeable",
+    "name": "artisanry/likeable",
     "description": "Likeable Polymorphic Eloquent Models for Laravel 5",
-    "keywords": ["laravel", "framework", "Laravel-likeable", "Laravel Likeable", "Brian Faust", "faustbrian"],
+    "keywords": ["laravel", "framework", "Laravel-likeable", "Laravel Likeable"],
     "license": "MIT",
     "authors": [{
         "name": "Brian Faust",
-        "email": "hello@brianfaust.me",
-        "homepage": "https://brianfaust.me"
+        "email": "hello@basecode.sh",
+        "homepage": "https://basecode.sh"
     }],
     "require": {
         "php": "^7.1",
@@ -20,12 +20,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BrianFaust\\Likeable\\": "src/"
+            "Artisanry\\Likeable\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BrianFaust\\Tests\\Likeable\\": "tests"
+            "Artisanry\\Tests\\Likeable\\": "tests"
         }
     },
     "config": {
@@ -38,7 +38,7 @@
         },
         "laravel": {
             "providers": [
-                "BrianFaust\\Likeable\\LikeableServiceProvider"
+                "Artisanry\\Likeable\\LikeableServiceProvider"
             ]
         }
     },
